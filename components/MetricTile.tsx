@@ -11,13 +11,13 @@ export function MetricTile({ metric }: { metric: Metric }) {
   const hasSpark = metric.series && metric.series.length > 1;
 
   return (
-    <div className="rounded-md bg-panel2/60 px-2 py-1.5" title={metric.note || undefined}>
+    <div className="rounded-md bg-panel2 px-2 py-1.5" title={metric.note || undefined}>
       <div className="flex items-baseline justify-between gap-1.5">
         <span className="truncate text-[11px] text-muted">{metric.label}</span>
         {delta && <span className={`shrink-0 text-[11px] font-medium ${deltaCls}`}>{delta}</span>}
       </div>
       <div className="mt-0.5 flex items-end justify-between gap-2">
-        <span className="text-base font-semibold leading-none tabular-nums">{formatMetricValue(metric.value, metric.unit)}</span>
+        <span className="text-base font-semibold leading-none tabular-nums text-ink">{formatMetricValue(metric.value, metric.unit)}</span>
         {hasSpark && (
           <div className="h-6 w-16 shrink-0">
             <Sparkline data={metric.series} tone={sparkTone} />

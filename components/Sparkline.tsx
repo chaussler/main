@@ -5,7 +5,7 @@ import type { MetricPoint } from "@/lib/types";
 
 export function Sparkline({ data, tone = "accent" }: { data?: MetricPoint[]; tone?: "accent" | "good" | "bad" | "muted" }) {
   if (!data || data.length < 2) return <div className="h-full w-full" />;
-  const color = tone === "good" ? "#3ecf8e" : tone === "bad" ? "#f06a6a" : tone === "muted" ? "#8b97ad" : "#5b8def";
+  const color = tone === "good" ? "#34d399" : tone === "bad" ? "#f87171" : tone === "muted" ? "#6b7280" : "#F15D32";
   const id = `spark-${tone}`;
   const values = data.map((d) => d.value);
   const min = Math.min(...values);

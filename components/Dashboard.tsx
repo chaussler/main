@@ -41,14 +41,14 @@ export function Dashboard({ initial }: { initial: DashboardSnapshot }) {
 
   return (
     <main className="mx-auto max-w-[1600px] px-4 py-5 sm:px-6">
-      <header className="mb-4 flex flex-wrap items-center justify-between gap-3">
+      <header className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b-2 border-accent pb-3">
         <div className="flex items-center gap-3">
-          <span className="rounded-md bg-white px-2.5 py-1.5">
+          <span className="rounded-md bg-white px-2 py-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo.jpg" alt="Michael Sonick, DMD" className="h-6 w-auto" />
           </span>
-          <div className="border-l border-white/10 pl-3">
-            <h1 className="text-xl font-bold leading-tight">Business Dashboard</h1>
+          <div className="border-l border-line pl-3">
+            <h1 className="text-lg font-bold leading-tight text-ink">Business Dashboard</h1>
             <p className="text-xs text-muted">
               Every weekly touch point in one place · updated {timeAgo(snap.generatedAt)}
               <span className="sr-only">{tick}</span>
@@ -60,8 +60,8 @@ export function Dashboard({ initial }: { initial: DashboardSnapshot }) {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setShowHints((v) => !v)}
-            className={`rounded-lg border px-2.5 py-1.5 text-xs font-medium ${
-              showHints ? "border-accent/40 bg-accent/10 text-accent" : "border-white/10 bg-panel text-muted hover:text-white"
+            className={`rounded-lg border px-2.5 py-1.5 text-xs font-medium transition-colors ${
+              showHints ? "border-accent bg-accent text-white" : "border-line bg-panel text-muted hover:text-ink"
             }`}
           >
             {showHints ? "Hide wiring notes" : "Wiring notes"}
@@ -69,7 +69,7 @@ export function Dashboard({ initial }: { initial: DashboardSnapshot }) {
           <button
             onClick={refresh}
             disabled={loading}
-            className="rounded-lg border border-white/10 bg-panel px-2.5 py-1.5 text-xs font-medium text-muted hover:text-white disabled:opacity-50"
+            className="rounded-lg border border-line bg-panel px-2.5 py-1.5 text-xs font-medium text-muted hover:text-ink disabled:opacity-50"
           >
             {loading ? "Refreshing…" : "Refresh"}
           </button>
@@ -83,9 +83,9 @@ export function Dashboard({ initial }: { initial: DashboardSnapshot }) {
           const delta = formatDelta(h.deltaPct);
           const deltaCls = tone === "good" ? "text-good" : tone === "bad" ? "text-bad" : "text-muted";
           return (
-            <div key={h.key} className="rounded-lg border border-white/5 bg-gradient-to-b from-panel2 to-panel px-3 py-2.5" title={h.hint}>
+            <div key={h.key} className="rounded-lg border border-line bg-panel px-3 py-2.5 shadow-sm" title={h.hint}>
               <div className="text-[10px] uppercase tracking-wide text-muted">{h.label}</div>
-              <div className="mt-0.5 text-xl font-bold tabular-nums">
+              <div className="mt-0.5 text-xl font-bold tabular-nums text-ink">
                 {h.unit === "currency" ? formatCurrency(h.value) : formatNumber(h.value)}
               </div>
               {delta && <div className={`text-[11px] font-medium ${deltaCls}`}>{delta}</div>}
@@ -101,10 +101,10 @@ export function Dashboard({ initial }: { initial: DashboardSnapshot }) {
         ))}
       </div>
 
-      <footer className="mt-8 border-t border-white/5 pt-3 text-[11px] leading-relaxed text-muted">
+      <footer className="mt-8 border-t border-line pt-3 text-[11px] leading-relaxed text-muted">
         <p>
-          <span className="text-good">live</span> = real API · <span className="text-accent">demo data</span> = sample numbers (add keys to{" "}
-          <code className="rounded bg-panel2 px-1">.env</code>) · <span className="text-warn">manual</span> = no public API, entered by hand or from a sheet.
+          <span className="font-medium text-good">live</span> = real API · <span className="font-medium text-accent">demo data</span> = sample numbers (add keys to{" "}
+          <code className="rounded bg-panel2 px-1">.env</code>) · <span className="font-medium text-warn">manual</span> = no public API, entered by hand or from a sheet.
           {" "}Toggle “Wiring notes” to see how each source connects.
         </p>
       </footer>

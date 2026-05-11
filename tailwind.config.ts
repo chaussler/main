@@ -8,14 +8,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0b1220",
-        panel: "#121a2b",
-        panel2: "#18233a",
-        muted: "#8b97ad",
-        accent: "#5b8def",
-        good: "#3ecf8e",
-        bad: "#f06a6a",
-        warn: "#e2b53e",
+        // Michael Sonick, DMD — dark theme, brand orange accent
+        page: "#000000", // app background (brand "Dark")
+        panel: "#121214", // cards (slightly raised off pure black)
+        panel2: "#1c1c20", // inner tiles
+        line: "#2a2a30", // borders
+        ink: "#f4f4f5", // primary text
+        muted: "#9aa0aa", // secondary text
+        accent: "#F15D32", // brand orange
+        good: "#34d399",
+        bad: "#f87171",
+        warn: "#fbbf24",
       },
     },
   },
