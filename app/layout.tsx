@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Business Dashboard",
+  title: "Michael Sonick, DMD — Business Dashboard",
   description: "One-glance view of every weekly touch point: social, email, newsletter, cold email, course & book sales, speaking, and Stripe.",
 };
 

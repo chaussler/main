@@ -42,14 +42,20 @@ export function Dashboard({ initial }: { initial: DashboardSnapshot }) {
   return (
     <main className="mx-auto max-w-[1600px] px-4 py-5 sm:px-6">
       <header className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h1 className="text-xl font-bold leading-tight">Business Dashboard</h1>
-          <p className="text-xs text-muted">
-            Every weekly touch point in one place · updated {timeAgo(snap.generatedAt)}
-            <span className="sr-only">{tick}</span>
-            {" · "}
-            {liveCount}/{snap.connectors.length} sources live
-          </p>
+        <div className="flex items-center gap-3">
+          <span className="rounded-md bg-white px-2.5 py-1.5">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.jpg" alt="Michael Sonick, DMD" className="h-6 w-auto" />
+          </span>
+          <div className="border-l border-white/10 pl-3">
+            <h1 className="text-xl font-bold leading-tight">Business Dashboard</h1>
+            <p className="text-xs text-muted">
+              Every weekly touch point in one place · updated {timeAgo(snap.generatedAt)}
+              <span className="sr-only">{tick}</span>
+              {" · "}
+              {liveCount}/{snap.connectors.length} sources live
+            </p>
+          </div>
         </div>
         <div className="flex items-center gap-2">
           <button
