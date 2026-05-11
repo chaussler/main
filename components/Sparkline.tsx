@@ -4,7 +4,7 @@ import { Area, AreaChart, ResponsiveContainer, YAxis } from "recharts";
 import type { MetricPoint } from "@/lib/types";
 
 export function Sparkline({ data, tone = "accent" }: { data?: MetricPoint[]; tone?: "accent" | "good" | "bad" | "muted" }) {
-  if (!data || data.length < 2) return <div className="h-10" />;
+  if (!data || data.length < 2) return <div className="h-full w-full" />;
   const color = tone === "good" ? "#3ecf8e" : tone === "bad" ? "#f06a6a" : tone === "muted" ? "#8b97ad" : "#5b8def";
   const id = `spark-${tone}`;
   const values = data.map((d) => d.value);
@@ -13,7 +13,7 @@ export function Sparkline({ data, tone = "accent" }: { data?: MetricPoint[]; ton
   const pad = (max - min) * 0.15 || 1;
 
   return (
-    <div className="h-10 w-full">
+    <div className="h-full w-full">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={data} margin={{ top: 2, right: 0, bottom: 0, left: 0 }}>
           <defs>

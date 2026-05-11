@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from "react";
 import type { DashboardSnapshot } from "@/lib/types";
 import { computeHeadline } from "@/lib/headline";
 import { ConnectorCard } from "./ConnectorCard";
-import { CATEGORY_ORDER } from "@/lib/connectors";
 import { formatCurrency, formatNumber, formatDelta, deltaTone, timeAgo } from "@/lib/format";
 
 const REFRESH_MS = 60_000;
@@ -13,6 +12,7 @@ export function Dashboard({ initial }: { initial: DashboardSnapshot }) {
   const [snap, setSnap] = useState<DashboardSnapshot>(initial);
   const [loading, setLoading] = useState(false);
   const [tick, setTick] = useState(0); // forces "x ago" labels to re-render
+  const [showHints, setShowHints] = useState(false);
 
   const refresh = useCallback(async () => {
     setLoading(true);
@@ -37,72 +37,69 @@ export function Dashboard({ initial }: { initial: DashboardSnapshot }) {
 
   const headline = computeHeadline(snap);
   const liveCount = snap.connectors.filter((c) => c.status === "live").length;
-
-  // group connectors by category in display order
-  const groups = CATEGORY_ORDER.map((cat) => ({
-    category: cat,
-    items: snap.connectors.filter((c) => c.category === cat),
-  })).filter((g) => g.items.length);
+  // connectors arrive already sorted by category from the API
 
   return (
-    <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
-      <header className="mb-6 flex flex-wrap items-end justify-between gap-3">
+    <main className="mx-auto max-w-[1600px] px-4 py-5 sm:px-6">
+      <header className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold">Business Dashboard</h1>
-          <p className="text-sm text-muted">
+          <h1 className="text-xl font-bold leading-tight">Business Dashboard</h1>
+          <p className="text-xs text-muted">
             Every weekly touch point in one place · updated {timeAgo(snap.generatedAt)}
             <span className="sr-only">{tick}</span>
             {" · "}
             {liveCount}/{snap.connectors.length} sources live
           </p>
         </div>
-        <button
-          onClick={refresh}
-          disabled={loading}
-          className="rounded-lg border border-white/10 bg-panel px-3 py-1.5 text-sm font-medium text-muted hover:text-white disabled:opacity-50"
-        >
-          {loading ? "Refreshing…" : "Refresh"}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setShowHints((v) => !v)}
+            className={`rounded-lg border px-2.5 py-1.5 text-xs font-medium ${
+              showHints ? "border-accent/40 bg-accent/10 text-accent" : "border-white/10 bg-panel text-muted hover:text-white"
+            }`}
+          >
+            {showHints ? "Hide wiring notes" : "Wiring notes"}
+          </button>
+          <button
+            onClick={refresh}
+            disabled={loading}
+            className="rounded-lg border border-white/10 bg-panel px-2.5 py-1.5 text-xs font-medium text-muted hover:text-white disabled:opacity-50"
+          >
+            {loading ? "Refreshing…" : "Refresh"}
+          </button>
+        </div>
       </header>
 
       {/* Headline tiles */}
-      <section className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+      <section className="mb-5 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-6">
         {headline.map((h) => {
           const tone = deltaTone(h.deltaPct, true);
           const delta = formatDelta(h.deltaPct);
           const deltaCls = tone === "good" ? "text-good" : tone === "bad" ? "text-bad" : "text-muted";
           return (
-            <div key={h.key} className="rounded-xl border border-white/5 bg-gradient-to-b from-panel2 to-panel p-4">
-              <div className="text-[11px] uppercase tracking-wide text-muted">{h.label}</div>
-              <div className="mt-1 text-2xl font-bold tabular-nums">
+            <div key={h.key} className="rounded-lg border border-white/5 bg-gradient-to-b from-panel2 to-panel px-3 py-2.5" title={h.hint}>
+              <div className="text-[10px] uppercase tracking-wide text-muted">{h.label}</div>
+              <div className="mt-0.5 text-xl font-bold tabular-nums">
                 {h.unit === "currency" ? formatCurrency(h.value) : formatNumber(h.value)}
               </div>
-              <div className="mt-1 flex items-center gap-2 text-[11px]">
-                {delta ? <span className={`font-medium ${deltaCls}`}>{delta}</span> : <span className="text-muted">·</span>}
-                {h.hint && <span className="text-muted">{h.hint}</span>}
-              </div>
+              {delta && <div className={`text-[11px] font-medium ${deltaCls}`}>{delta}</div>}
             </div>
           );
         })}
       </section>
 
-      {/* Channel sections */}
-      {groups.map((g) => (
-        <div key={g.category} className="mb-8">
-          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted">{g.category}</h2>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {g.items.map((c) => (
-              <ConnectorCard key={c.id} connector={c} />
-            ))}
-          </div>
-        </div>
-      ))}
+      {/* All channels in one dense grid (cards are already grouped by category order) */}
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        {snap.connectors.map((c) => (
+          <ConnectorCard key={c.id} connector={c} showHint={showHints} />
+        ))}
+      </div>
 
-      <footer className="mt-10 border-t border-white/5 pt-4 text-[11px] leading-relaxed text-muted">
+      <footer className="mt-8 border-t border-white/5 pt-3 text-[11px] leading-relaxed text-muted">
         <p>
-          <strong className="text-muted/80">Demo data</strong> is shown for any source without API credentials. Add keys to{" "}
-          <code className="rounded bg-panel2 px-1">.env</code> (see <code className="rounded bg-panel2 px-1">.env.example</code>) to switch a source to{" "}
-          <span className="text-good">live</span>. Sources marked <span className="text-warn">manual</span> have no public API and are entered by hand or pulled from a sheet.
+          <span className="text-good">live</span> = real API · <span className="text-accent">demo data</span> = sample numbers (add keys to{" "}
+          <code className="rounded bg-panel2 px-1">.env</code>) · <span className="text-warn">manual</span> = no public API, entered by hand or from a sheet.
+          {" "}Toggle “Wiring notes” to see how each source connects.
         </p>
       </footer>
     </main>
