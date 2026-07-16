@@ -5,14 +5,17 @@ import type { Caption } from "../captions";
 type Props = {
   captions: Caption[];
   startFrame: number; // composition frame where this clip's captions begin
+  hideFrames?: { from: number; to: number }[]; // local frame windows to suppress captions
 };
 
 // Pop-on phrase captions: white serif on a black rounded pill, centered low,
 // each phrase springs in as speech reaches it — matching the example cold open.
-export const Captions: React.FC<Props> = ({ captions, startFrame }) => {
+export const Captions: React.FC<Props> = ({ captions, startFrame, hideFrames = [] }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const local = (frame - startFrame) / fps; // seconds into this clip
+  const localFrame = frame - startFrame;
+  if (hideFrames.some((w) => localFrame >= w.from && localFrame < w.to)) return null;
+  const local = localFrame / fps; // seconds into this clip
 
   // Find the active caption (last one whose window contains `local`).
   let active: { cap: Caption; index: number } | null = null;
