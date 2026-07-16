@@ -1,0 +1,23 @@
+{
+  "name": "tbyh-guest-intro",
+  "version": "1.0.0",
+  "description": "Take Back Your Health — animated guest intro (Melissa Schreibfeder)",
+  "private": true,
+  "scripts": {
+    "start": "remotion studio",
+    "render": "remotion render Intro out/melissa-intro.mp4",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@fontsource/eb-garamond": "^5.2.7",
+    "@fontsource/poppins": "^5.2.7",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.290"
+  },
+  "devDependencies": {
+    "@remotion/cli": "4.0.290",
+    "@types/react": "19.0.0",
+    "typescript": "5.5.4"
+  }
+}
