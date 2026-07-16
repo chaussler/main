@@ -107,77 +107,82 @@ export const clip2Captions: Caption[] = [
   },
   {
     "start": 2.7,
-    "end": 5.94,
+    "end": 5.88,
     "text": "thyroiditis, finally got a Hashimoto's"
   },
   {
-    "start": 5.94,
-    "end": 6.54,
-    "text": "diagnosis."
+    "start": 5.88,
+    "end": 7.84,
+    "text": "diagnosis with antibodies in"
   },
   {
-    "start": 6.54,
-    "end": 10.68,
+    "start": 7.84,
+    "end": 9.74,
+    "text": "the 7,000s."
+  },
+  {
+    "start": 9.74,
+    "end": 10.5,
     "text": "I was told,"
   },
   {
-    "start": 10.68,
-    "end": 12.5,
-    "text": "you know, you're fine."
+    "start": 10.5,
+    "end": 12.46,
+    "text": "you know, you're fine,"
   },
   {
-    "start": 12.5,
-    "end": 13.64,
-    "text": "Just take this little pill."
+    "start": 12.46,
+    "end": 13.62,
+    "text": "just take this little pill."
   },
   {
-    "start": 13.64,
-    "end": 15.0,
+    "start": 13.62,
+    "end": 15.02,
     "text": "And no, there's really nothing"
   },
   {
-    "start": 15.0,
-    "end": 16.68,
+    "start": 15.02,
+    "end": 16.6,
     "text": "you can do for those antibodies."
   },
   {
-    "start": 16.68,
-    "end": 19.52,
+    "start": 16.6,
+    "end": 19.48,
     "text": "And I had severe chronic"
   },
   {
-    "start": 19.52,
-    "end": 22.86,
-    "text": "debilitating fatigue and it"
+    "start": 19.48,
+    "end": 21.98,
+    "text": "debilitating fatigue."
   },
   {
-    "start": 22.86,
-    "end": 25.42,
-    "text": "then took me three years"
+    "start": 21.98,
+    "end": 24.02,
+    "text": "And it then took me"
   },
   {
-    "start": 25.42,
-    "end": 27.24,
-    "text": "to get a diagnosis of"
+    "start": 24.02,
+    "end": 26.26,
+    "text": "three years to get a"
   },
   {
-    "start": 27.24,
-    "end": 28.78,
-    "text": "chronic Lyme disease."
+    "start": 26.26,
+    "end": 28.74,
+    "text": "diagnosis of chronic Lyme disease,"
   },
   {
-    "start": 28.78,
+    "start": 28.74,
     "end": 30.32,
-    "text": "And it was really getting"
+    "text": "and it was really getting"
   },
   {
     "start": 30.32,
-    "end": 32.72,
+    "end": 32.22,
     "text": "that chronic Lyme disease treated."
   },
   {
-    "start": 32.72,
-    "end": 35.24,
+    "start": 32.22,
+    "end": 35.2,
     "text": "That gave me my life back."
   }
 ];
