@@ -8,9 +8,10 @@ export const LogoChip: React.FC = () => {
       style={{
         position: "absolute",
         top: 28,
-        left: 28,
-        padding: "14px 26px 16px 22px",
-        borderRadius: 10,
+        left: 0,
+        padding: "14px 26px 16px 28px",
+        borderTopRightRadius: 10,
+        borderBottomRightRadius: 10,
         background: "rgba(206, 218, 231, 0.55)",
         boxShadow: "0 2px 10px rgba(32,48,74,0.10)",
         lineHeight: 1,
