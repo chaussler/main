@@ -8,9 +8,13 @@ import "@fontsource/poppins/400.css";
 import "@fontsource/poppins/500.css";
 import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
+import "@fontsource/tinos/400.css";
+import "@fontsource/tinos/700.css";
 
 export const garamond = "'EB Garamond', Georgia, serif";
 export const poppins = "'Poppins', system-ui, sans-serif";
+// Times-like serif used for the cold-open captions (matches the example)
+export const captionSerif = "'Tinos', 'Times New Roman', Georgia, serif";
 
 // --- Show brand: "Take Back Your Health with Dr. Amy Myers" ---
 export const SHOW = {

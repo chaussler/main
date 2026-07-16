@@ -1,8 +1,21 @@
-# Take Back Your Health — Animated Guest Intro
+# Take Back Your Health — Cold Open + Animated Guest Intro
 
-A [Remotion](https://remotion.dev) project that renders the animated guest-intro
-that plays over Dr. Amy Myers' voiceover introducing **Melissa Schreibfeder**
-(Founder, Functional Nurse Academy).
+A [Remotion](https://remotion.dev) project with two compositions for the
+**Melissa Schreibfeder** episode (Founder, Functional Nurse Academy):
+
+- **`ColdOpen`** (~63s) — the teaser: two episode clips played back-to-back
+  with animated pop-on captions (white Times-style serif on a black pill,
+  synced to speech) and the show logo sliding in top-left. Matches the cold
+  open example. Render: `npm run render-coldopen` → `out/melissa-cold-open.mp4`.
+  Requires `public/clip1.mp4` and `public/clip2.mp4` (the two source clips —
+  git-ignored due to size; drop them in `public/` before rendering).
+- **`Intro`** (~42.5s) — the animated guest-intro over Dr. Amy Myers' voiceover
+  (documented below).
+
+## Guest Intro (`Intro`)
+
+Renders the animated guest-intro that plays over Dr. Amy Myers' voiceover
+introducing **Melissa Schreibfeder** (Founder, Functional Nurse Academy).
 
 It reproduces the show's template from the provided example — periwinkle backdrop,
 the *"Take Back Your Health with Dr. Amy Myers"* logo pinned top-left, website

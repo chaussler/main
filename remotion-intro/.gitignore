@@ -2,3 +2,6 @@ node_modules/
 out/
 .remotion/
 *.log
+# Large source clips for the cold open (place locally in public/ to render)
+public/clip1.mp4
+public/clip2.mp4

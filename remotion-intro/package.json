@@ -6,11 +6,13 @@
   "scripts": {
     "start": "remotion studio",
     "render": "remotion render Intro out/melissa-intro.mp4",
+    "render-coldopen": "remotion render ColdOpen out/melissa-cold-open.mp4",
     "upgrade": "remotion upgrade"
   },
   "dependencies": {
     "@fontsource/eb-garamond": "^5.2.7",
     "@fontsource/poppins": "^5.2.7",
+    "@fontsource/tinos": "^5.2.7",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "remotion": "4.0.290"
