@@ -1,23 +1,21 @@
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { captionSerif } from "../theme";
+import { poppins } from "../theme";
 import type { Caption } from "../captions";
 
 type Props = {
   captions: Caption[];
   startFrame: number; // composition frame where this clip's captions begin
-  hideFrames?: { from: number; to: number }[]; // local frame windows to suppress captions
 };
 
-// Pop-on phrase captions: white serif on a black rounded pill, centered low,
-// each phrase springs in as speech reaches it — matching the example cold open.
-export const Captions: React.FC<Props> = ({ captions, startFrame, hideFrames = [] }) => {
+const HIGHLIGHT = "#FFE000"; // yellow for the word currently being spoken
+
+// Clean white sans-serif captions (no background box) with a heavy outline for
+// legibility over the bright background; the active word is highlighted yellow.
+export const Captions: React.FC<Props> = ({ captions, startFrame }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const localFrame = frame - startFrame;
-  if (hideFrames.some((w) => localFrame >= w.from && localFrame < w.to)) return null;
-  const local = localFrame / fps; // seconds into this clip
+  const local = (frame - startFrame) / fps; // seconds into this clip
 
-  // Find the active caption (last one whose window contains `local`).
   let active: { cap: Caption; index: number } | null = null;
   for (let i = 0; i < captions.length; i++) {
     const c = captions[i];
@@ -26,14 +24,21 @@ export const Captions: React.FC<Props> = ({ captions, startFrame, hideFrames = [
   }
   if (!active) return null;
 
+  const cap = active.cap;
+  // The active word is the last one that has started (holds through small gaps).
+  let activeWord = -1;
+  for (let i = 0; i < cap.words.length; i++) {
+    if (cap.words[i].s <= local) activeWord = i;
+  }
+
   const appear = spring({
-    frame: frame - startFrame - Math.round(active.cap.start * fps),
+    frame: frame - startFrame - Math.round(cap.start * fps),
     fps,
-    config: { damping: 200, mass: 0.5, stiffness: 180 },
-    durationInFrames: 8,
+    config: { damping: 200, mass: 0.4, stiffness: 190 },
+    durationInFrames: 7,
   });
-  const scale = 0.9 + appear * 0.1;
-  const opacity = Math.min(1, appear * 1.4);
+  const scale = 0.94 + appear * 0.06;
+  const opacity = Math.min(1, appear * 1.5);
 
   return (
     <div
@@ -41,7 +46,7 @@ export const Captions: React.FC<Props> = ({ captions, startFrame, hideFrames = [
         position: "absolute",
         left: 0,
         right: 0,
-        bottom: 288,
+        bottom: 262,
         display: "flex",
         justifyContent: "center",
         pointerEvents: "none",
@@ -49,27 +54,30 @@ export const Captions: React.FC<Props> = ({ captions, startFrame, hideFrames = [
     >
       <div
         style={{
-          maxWidth: 1500,
+          maxWidth: 1560,
           transform: `scale(${scale})`,
           opacity,
-          background: "rgba(0,0,0,0.88)",
-          borderRadius: 16,
-          padding: "8px 30px 14px",
           textAlign: "center",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: "0 24px",
+          fontFamily: poppins,
+          fontWeight: 700,
+          fontSize: 78,
+          lineHeight: 1.18,
+          letterSpacing: 0.5,
+          // Legibility without a background box: dark stroke behind the fill + soft shadow.
+          WebkitTextStroke: "6px rgba(0,0,0,0.92)",
+          paintOrder: "stroke fill",
+          textShadow: "0 4px 14px rgba(0,0,0,0.55)",
         }}
       >
-        <span
-          style={{
-            fontFamily: captionSerif,
-            fontWeight: 700,
-            fontSize: 90,
-            lineHeight: 1.12,
-            color: "#fff",
-            letterSpacing: 0.3,
-          }}
-        >
-          {active.cap.text}
-        </span>
+        {cap.words.map((w, i) => (
+          <span key={i} style={{ color: i === activeWord ? HIGHLIGHT : "#fff" }}>
+            {w.t}
+          </span>
+        ))}
       </div>
     </div>
   );

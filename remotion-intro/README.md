@@ -4,9 +4,10 @@ A [Remotion](https://remotion.dev) project with two compositions for the
 **Melissa Schreibfeder** episode (Founder, Functional Nurse Academy):
 
 - **`ColdOpen`** (~63s) — the teaser: two episode clips played back-to-back
-  with animated pop-on captions (white Times-style serif on a black pill,
-  synced to speech) and the show logo sliding in top-left. Matches the cold
-  open example. Render: `npm run render-coldopen` → `out/melissa-cold-open.mp4`.
+  with animated karaoke captions (clean white Poppins sans-serif, no
+  background, the word currently being spoken highlighted yellow, synced from
+  a word-level transcript) and the show logo sliding in top-left. Render:
+  `npm run render-coldopen` → `out/melissa-cold-open.mp4`.
   Requires `public/clip1.mp4` and `public/clip2.mp4` (the two source clips —
   git-ignored due to size; drop them in `public/` before rendering).
 - **`Intro`** (~42.5s) — the animated guest-intro over Dr. Amy Myers' voiceover

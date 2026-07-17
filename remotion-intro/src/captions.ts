@@ -1,188 +1,1030 @@
-// Auto-generated caption timings (seconds). Times are per-clip.
-export type Caption = { start: number; end: number; text: string };
+// Auto-generated caption timings (seconds, per-clip) with per-word timing.
+export type Word = { t: string; s: number; e: number };
+export type Caption = { start: number; end: number; words: Word[] };
 
 export const clip1Captions: Caption[] = [
-  {
-    "start": 0.0,
-    "end": 1.28,
-    "text": "When you kill Lyme,"
-  },
-  {
-    "start": 1.28,
-    "end": 2.38,
-    "text": "Lyme does not like it"
-  },
-  {
-    "start": 2.38,
-    "end": 3.2,
-    "text": "when you kill it."
-  },
-  {
-    "start": 3.2,
-    "end": 4.16,
-    "text": "It is like putting a"
-  },
-  {
-    "start": 4.16,
-    "end": 5.48,
-    "text": "bomb off in the body."
-  },
-  {
-    "start": 5.48,
-    "end": 6.7,
-    "text": "And then also Lyme causes"
-  },
-  {
-    "start": 6.7,
-    "end": 8.62,
-    "text": "so much inflammation and nutrient"
-  },
-  {
-    "start": 8.62,
-    "end": 10.94,
-    "text": "deficiencies and all of these things."
-  },
-  {
-    "start": 10.94,
-    "end": 11.76,
-    "text": "So the body,"
-  },
-  {
-    "start": 11.76,
-    "end": 12.96,
-    "text": "even after you treat the"
-  },
-  {
-    "start": 12.96,
-    "end": 14.56,
-    "text": "infection, you may not feel"
-  },
-  {
-    "start": 14.56,
-    "end": 15.9,
-    "text": "that well because the body"
-  },
-  {
-    "start": 15.9,
-    "end": 18.32,
-    "text": "needs to recuperate and recover"
-  },
-  {
-    "start": 18.32,
-    "end": 19.18,
-    "text": "from that."
-  },
-  {
-    "start": 19.18,
-    "end": 20.22,
-    "text": "But after I got through"
-  },
-  {
-    "start": 20.22,
-    "end": 22.0,
-    "text": "that recovery phase,"
-  },
-  {
-    "start": 22.0,
-    "end": 23.02,
-    "text": "I mean, I really can"
-  },
-  {
-    "start": 23.02,
-    "end": 26.36,
-    "text": "confidently say I have zero"
-  },
-  {
-    "start": 26.36,
-    "end": 27.64,
-    "text": "chronic fatigue."
-  }
+ {
+  "start": 0.0,
+  "end": 1.28,
+  "words": [
+   {
+    "t": "When",
+    "s": 0.0,
+    "e": 0.28
+   },
+   {
+    "t": "you",
+    "s": 0.28,
+    "e": 0.42
+   },
+   {
+    "t": "kill",
+    "s": 0.42,
+    "e": 0.7
+   },
+   {
+    "t": "Lyme,",
+    "s": 0.7,
+    "e": 1.1
+   }
+  ]
+ },
+ {
+  "start": 1.28,
+  "end": 2.38,
+  "words": [
+   {
+    "t": "Lyme",
+    "s": 1.28,
+    "e": 1.56
+   },
+   {
+    "t": "does",
+    "s": 1.56,
+    "e": 1.76
+   },
+   {
+    "t": "not",
+    "s": 1.76,
+    "e": 2.0
+   },
+   {
+    "t": "like",
+    "s": 2.0,
+    "e": 2.22
+   },
+   {
+    "t": "it",
+    "s": 2.22,
+    "e": 2.38
+   }
+  ]
+ },
+ {
+  "start": 2.38,
+  "end": 3.2,
+  "words": [
+   {
+    "t": "when",
+    "s": 2.38,
+    "e": 2.54
+   },
+   {
+    "t": "you",
+    "s": 2.54,
+    "e": 2.72
+   },
+   {
+    "t": "kill",
+    "s": 2.72,
+    "e": 2.94
+   },
+   {
+    "t": "it.",
+    "s": 2.94,
+    "e": 3.12
+   }
+  ]
+ },
+ {
+  "start": 3.2,
+  "end": 4.16,
+  "words": [
+   {
+    "t": "It",
+    "s": 3.2,
+    "e": 3.28
+   },
+   {
+    "t": "is",
+    "s": 3.28,
+    "e": 3.48
+   },
+   {
+    "t": "like",
+    "s": 3.48,
+    "e": 3.7
+   },
+   {
+    "t": "putting",
+    "s": 3.7,
+    "e": 3.94
+   },
+   {
+    "t": "a",
+    "s": 3.94,
+    "e": 4.16
+   }
+  ]
+ },
+ {
+  "start": 4.16,
+  "end": 5.48,
+  "words": [
+   {
+    "t": "bomb",
+    "s": 4.16,
+    "e": 4.46
+   },
+   {
+    "t": "off",
+    "s": 4.46,
+    "e": 4.76
+   },
+   {
+    "t": "in",
+    "s": 4.76,
+    "e": 5.0
+   },
+   {
+    "t": "the",
+    "s": 5.0,
+    "e": 5.1
+   },
+   {
+    "t": "body.",
+    "s": 5.1,
+    "e": 5.36
+   }
+  ]
+ },
+ {
+  "start": 5.48,
+  "end": 6.7,
+  "words": [
+   {
+    "t": "And",
+    "s": 5.48,
+    "e": 5.48
+   },
+   {
+    "t": "then",
+    "s": 5.48,
+    "e": 5.6
+   },
+   {
+    "t": "also",
+    "s": 5.6,
+    "e": 5.92
+   },
+   {
+    "t": "Lyme",
+    "s": 5.92,
+    "e": 6.32
+   },
+   {
+    "t": "causes",
+    "s": 6.32,
+    "e": 6.7
+   }
+  ]
+ },
+ {
+  "start": 6.7,
+  "end": 8.62,
+  "words": [
+   {
+    "t": "so",
+    "s": 6.7,
+    "e": 7.02
+   },
+   {
+    "t": "much",
+    "s": 7.02,
+    "e": 7.2
+   },
+   {
+    "t": "inflammation",
+    "s": 7.2,
+    "e": 7.84
+   },
+   {
+    "t": "and",
+    "s": 7.84,
+    "e": 8.18
+   },
+   {
+    "t": "nutrient",
+    "s": 8.18,
+    "e": 8.62
+   }
+  ]
+ },
+ {
+  "start": 8.62,
+  "end": 10.94,
+  "words": [
+   {
+    "t": "deficiencies",
+    "s": 8.62,
+    "e": 9.28
+   },
+   {
+    "t": "and",
+    "s": 9.28,
+    "e": 9.96
+   },
+   {
+    "t": "all",
+    "s": 9.96,
+    "e": 10.3
+   },
+   {
+    "t": "of",
+    "s": 10.3,
+    "e": 10.44
+   },
+   {
+    "t": "these",
+    "s": 10.44,
+    "e": 10.58
+   },
+   {
+    "t": "things.",
+    "s": 10.58,
+    "e": 10.8
+   }
+  ]
+ },
+ {
+  "start": 10.94,
+  "end": 11.76,
+  "words": [
+   {
+    "t": "So",
+    "s": 10.94,
+    "e": 10.96
+   },
+   {
+    "t": "the",
+    "s": 10.96,
+    "e": 11.08
+   },
+   {
+    "t": "body,",
+    "s": 11.08,
+    "e": 11.44
+   }
+  ]
+ },
+ {
+  "start": 11.76,
+  "end": 12.96,
+  "words": [
+   {
+    "t": "even",
+    "s": 11.76,
+    "e": 11.96
+   },
+   {
+    "t": "after",
+    "s": 11.96,
+    "e": 12.32
+   },
+   {
+    "t": "you",
+    "s": 12.54,
+    "e": 12.68
+   },
+   {
+    "t": "treat",
+    "s": 12.68,
+    "e": 12.76
+   },
+   {
+    "t": "the",
+    "s": 12.76,
+    "e": 12.96
+   }
+  ]
+ },
+ {
+  "start": 12.96,
+  "end": 14.56,
+  "words": [
+   {
+    "t": "infection,",
+    "s": 12.96,
+    "e": 13.34
+   },
+   {
+    "t": "you",
+    "s": 13.64,
+    "e": 13.8
+   },
+   {
+    "t": "may",
+    "s": 13.8,
+    "e": 14.0
+   },
+   {
+    "t": "not",
+    "s": 14.0,
+    "e": 14.28
+   },
+   {
+    "t": "feel",
+    "s": 14.28,
+    "e": 14.56
+   }
+  ]
+ },
+ {
+  "start": 14.56,
+  "end": 15.9,
+  "words": [
+   {
+    "t": "that",
+    "s": 14.56,
+    "e": 14.82
+   },
+   {
+    "t": "well",
+    "s": 14.82,
+    "e": 15.06
+   },
+   {
+    "t": "because",
+    "s": 15.06,
+    "e": 15.36
+   },
+   {
+    "t": "the",
+    "s": 15.36,
+    "e": 15.58
+   },
+   {
+    "t": "body",
+    "s": 15.58,
+    "e": 15.9
+   }
+  ]
+ },
+ {
+  "start": 15.9,
+  "end": 18.32,
+  "words": [
+   {
+    "t": "needs",
+    "s": 15.9,
+    "e": 16.22
+   },
+   {
+    "t": "to",
+    "s": 16.22,
+    "e": 16.48
+   },
+   {
+    "t": "recuperate",
+    "s": 16.48,
+    "e": 17.12
+   },
+   {
+    "t": "and",
+    "s": 17.12,
+    "e": 17.6
+   },
+   {
+    "t": "recover",
+    "s": 17.6,
+    "e": 18.32
+   }
+  ]
+ },
+ {
+  "start": 18.32,
+  "end": 19.18,
+  "words": [
+   {
+    "t": "from",
+    "s": 18.32,
+    "e": 18.78
+   },
+   {
+    "t": "that.",
+    "s": 18.78,
+    "e": 19.06
+   }
+  ]
+ },
+ {
+  "start": 19.18,
+  "end": 20.22,
+  "words": [
+   {
+    "t": "But",
+    "s": 19.18,
+    "e": 19.26
+   },
+   {
+    "t": "after",
+    "s": 19.26,
+    "e": 19.58
+   },
+   {
+    "t": "I",
+    "s": 19.58,
+    "e": 19.84
+   },
+   {
+    "t": "got",
+    "s": 19.84,
+    "e": 20.0
+   },
+   {
+    "t": "through",
+    "s": 20.0,
+    "e": 20.22
+   }
+  ]
+ },
+ {
+  "start": 20.22,
+  "end": 22.0,
+  "words": [
+   {
+    "t": "that",
+    "s": 20.22,
+    "e": 20.42
+   },
+   {
+    "t": "recovery",
+    "s": 20.42,
+    "e": 20.82
+   },
+   {
+    "t": "phase,",
+    "s": 20.82,
+    "e": 21.32
+   }
+  ]
+ },
+ {
+  "start": 22.0,
+  "end": 23.02,
+  "words": [
+   {
+    "t": "I",
+    "s": 22.0,
+    "e": 22.02
+   },
+   {
+    "t": "mean,",
+    "s": 22.02,
+    "e": 22.08
+   },
+   {
+    "t": "I",
+    "s": 22.18,
+    "e": 22.42
+   },
+   {
+    "t": "really",
+    "s": 22.42,
+    "e": 22.68
+   },
+   {
+    "t": "can",
+    "s": 22.68,
+    "e": 23.02
+   }
+  ]
+ },
+ {
+  "start": 23.02,
+  "end": 26.36,
+  "words": [
+   {
+    "t": "confidently",
+    "s": 23.02,
+    "e": 23.9
+   },
+   {
+    "t": "say",
+    "s": 23.9,
+    "e": 24.42
+   },
+   {
+    "t": "I",
+    "s": 24.42,
+    "e": 25.16
+   },
+   {
+    "t": "have",
+    "s": 25.16,
+    "e": 25.6
+   },
+   {
+    "t": "zero",
+    "s": 25.6,
+    "e": 26.36
+   }
+  ]
+ },
+ {
+  "start": 26.36,
+  "end": 27.64,
+  "words": [
+   {
+    "t": "chronic",
+    "s": 26.36,
+    "e": 27.18
+   },
+   {
+    "t": "fatigue.",
+    "s": 27.18,
+    "e": 27.64
+   }
+  ]
+ }
 ];
 
 export const clip2Captions: Caption[] = [
-  {
-    "start": 0.0,
-    "end": 2.7,
-    "text": "And I had severe postpartum"
-  },
-  {
-    "start": 2.7,
-    "end": 5.88,
-    "text": "thyroiditis, finally got a Hashimoto's"
-  },
-  {
-    "start": 5.88,
-    "end": 7.84,
-    "text": "diagnosis with antibodies in"
-  },
-  {
-    "start": 7.84,
-    "end": 9.74,
-    "text": "the 7,000s."
-  },
-  {
-    "start": 9.74,
-    "end": 10.5,
-    "text": "I was told,"
-  },
-  {
-    "start": 10.5,
-    "end": 12.46,
-    "text": "you know, you're fine,"
-  },
-  {
-    "start": 12.46,
-    "end": 13.62,
-    "text": "just take this little pill."
-  },
-  {
-    "start": 13.62,
-    "end": 15.02,
-    "text": "And no, there's really nothing"
-  },
-  {
-    "start": 15.02,
-    "end": 16.6,
-    "text": "you can do for those antibodies."
-  },
-  {
-    "start": 16.6,
-    "end": 19.48,
-    "text": "And I had severe chronic"
-  },
-  {
-    "start": 19.48,
-    "end": 21.98,
-    "text": "debilitating fatigue."
-  },
-  {
-    "start": 21.98,
-    "end": 24.02,
-    "text": "And it then took me"
-  },
-  {
-    "start": 24.02,
-    "end": 26.26,
-    "text": "three years to get a"
-  },
-  {
-    "start": 26.26,
-    "end": 28.74,
-    "text": "diagnosis of chronic Lyme disease,"
-  },
-  {
-    "start": 28.74,
-    "end": 30.32,
-    "text": "and it was really getting"
-  },
-  {
-    "start": 30.32,
-    "end": 32.22,
-    "text": "that chronic Lyme disease treated."
-  },
-  {
-    "start": 32.22,
-    "end": 35.2,
-    "text": "That gave me my life back."
-  }
+ {
+  "start": 0.0,
+  "end": 2.7,
+  "words": [
+   {
+    "t": "And",
+    "s": 0.0,
+    "e": 0.26
+   },
+   {
+    "t": "I",
+    "s": 0.26,
+    "e": 0.48
+   },
+   {
+    "t": "had",
+    "s": 0.48,
+    "e": 0.86
+   },
+   {
+    "t": "severe",
+    "s": 0.86,
+    "e": 1.68
+   },
+   {
+    "t": "postpartum",
+    "s": 1.68,
+    "e": 2.7
+   }
+  ]
+ },
+ {
+  "start": 2.7,
+  "end": 5.88,
+  "words": [
+   {
+    "t": "thyroiditis,",
+    "s": 2.7,
+    "e": 3.98
+   },
+   {
+    "t": "finally",
+    "s": 3.98,
+    "e": 4.64
+   },
+   {
+    "t": "got",
+    "s": 4.64,
+    "e": 5.0
+   },
+   {
+    "t": "a",
+    "s": 5.0,
+    "e": 5.12
+   },
+   {
+    "t": "Hashimoto's",
+    "s": 5.12,
+    "e": 5.88
+   }
+  ]
+ },
+ {
+  "start": 5.88,
+  "end": 7.84,
+  "words": [
+   {
+    "t": "diagnosis",
+    "s": 5.88,
+    "e": 6.34
+   },
+   {
+    "t": "with",
+    "s": 6.34,
+    "e": 6.82
+   },
+   {
+    "t": "antibodies",
+    "s": 6.82,
+    "e": 7.48
+   },
+   {
+    "t": "in",
+    "s": 7.48,
+    "e": 7.84
+   }
+  ]
+ },
+ {
+  "start": 7.84,
+  "end": 9.74,
+  "words": [
+   {
+    "t": "the",
+    "s": 7.84,
+    "e": 8.0
+   },
+   {
+    "t": "7,000s.",
+    "s": 8.0,
+    "e": 9.46
+   }
+  ]
+ },
+ {
+  "start": 9.74,
+  "end": 10.5,
+  "words": [
+   {
+    "t": "I",
+    "s": 9.74,
+    "e": 9.96
+   },
+   {
+    "t": "was",
+    "s": 9.96,
+    "e": 10.08
+   },
+   {
+    "t": "told,",
+    "s": 10.08,
+    "e": 10.38
+   }
+  ]
+ },
+ {
+  "start": 10.5,
+  "end": 12.46,
+  "words": [
+   {
+    "t": "you",
+    "s": 10.5,
+    "e": 10.76
+   },
+   {
+    "t": "know,",
+    "s": 10.76,
+    "e": 11.02
+   },
+   {
+    "t": "you're",
+    "s": 11.48,
+    "e": 11.8
+   },
+   {
+    "t": "fine,",
+    "s": 11.8,
+    "e": 12.3
+   }
+  ]
+ },
+ {
+  "start": 12.46,
+  "end": 13.62,
+  "words": [
+   {
+    "t": "just",
+    "s": 12.46,
+    "e": 12.6
+   },
+   {
+    "t": "take",
+    "s": 12.6,
+    "e": 12.82
+   },
+   {
+    "t": "this",
+    "s": 12.82,
+    "e": 12.98
+   },
+   {
+    "t": "little",
+    "s": 12.98,
+    "e": 13.16
+   },
+   {
+    "t": "pill.",
+    "s": 13.16,
+    "e": 13.62
+   }
+  ]
+ },
+ {
+  "start": 13.62,
+  "end": 15.02,
+  "words": [
+   {
+    "t": "And",
+    "s": 13.62,
+    "e": 14.08
+   },
+   {
+    "t": "no,",
+    "s": 14.08,
+    "e": 14.3
+   },
+   {
+    "t": "there's",
+    "s": 14.3,
+    "e": 14.56
+   },
+   {
+    "t": "really",
+    "s": 14.56,
+    "e": 14.7
+   },
+   {
+    "t": "nothing",
+    "s": 14.7,
+    "e": 15.02
+   }
+  ]
+ },
+ {
+  "start": 15.02,
+  "end": 16.6,
+  "words": [
+   {
+    "t": "you",
+    "s": 15.02,
+    "e": 15.22
+   },
+   {
+    "t": "can",
+    "s": 15.22,
+    "e": 15.36
+   },
+   {
+    "t": "do",
+    "s": 15.36,
+    "e": 15.48
+   },
+   {
+    "t": "for",
+    "s": 15.48,
+    "e": 15.62
+   },
+   {
+    "t": "those",
+    "s": 15.62,
+    "e": 15.8
+   },
+   {
+    "t": "antibodies.",
+    "s": 15.8,
+    "e": 16.28
+   }
+  ]
+ },
+ {
+  "start": 16.6,
+  "end": 19.48,
+  "words": [
+   {
+    "t": "And",
+    "s": 16.6,
+    "e": 16.7
+   },
+   {
+    "t": "I",
+    "s": 16.7,
+    "e": 16.86
+   },
+   {
+    "t": "had",
+    "s": 16.86,
+    "e": 17.18
+   },
+   {
+    "t": "severe",
+    "s": 17.18,
+    "e": 18.42
+   },
+   {
+    "t": "chronic",
+    "s": 18.42,
+    "e": 19.48
+   }
+  ]
+ },
+ {
+  "start": 19.48,
+  "end": 21.98,
+  "words": [
+   {
+    "t": "debilitating",
+    "s": 19.48,
+    "e": 20.84
+   },
+   {
+    "t": "fatigue.",
+    "s": 20.84,
+    "e": 21.62
+   }
+  ]
+ },
+ {
+  "start": 21.98,
+  "end": 24.02,
+  "words": [
+   {
+    "t": "And",
+    "s": 21.98,
+    "e": 22.62
+   },
+   {
+    "t": "it",
+    "s": 22.62,
+    "e": 22.86
+   },
+   {
+    "t": "then",
+    "s": 22.86,
+    "e": 23.26
+   },
+   {
+    "t": "took",
+    "s": 23.26,
+    "e": 23.58
+   },
+   {
+    "t": "me",
+    "s": 23.58,
+    "e": 24.02
+   }
+  ]
+ },
+ {
+  "start": 24.02,
+  "end": 26.26,
+  "words": [
+   {
+    "t": "three",
+    "s": 24.02,
+    "e": 24.86
+   },
+   {
+    "t": "years",
+    "s": 24.86,
+    "e": 25.5
+   },
+   {
+    "t": "to",
+    "s": 25.5,
+    "e": 25.94
+   },
+   {
+    "t": "get",
+    "s": 25.94,
+    "e": 26.1
+   },
+   {
+    "t": "a",
+    "s": 26.1,
+    "e": 26.26
+   }
+  ]
+ },
+ {
+  "start": 26.26,
+  "end": 28.74,
+  "words": [
+   {
+    "t": "diagnosis",
+    "s": 26.26,
+    "e": 26.82
+   },
+   {
+    "t": "of",
+    "s": 26.82,
+    "e": 27.24
+   },
+   {
+    "t": "chronic",
+    "s": 27.24,
+    "e": 27.66
+   },
+   {
+    "t": "Lyme",
+    "s": 27.66,
+    "e": 27.98
+   },
+   {
+    "t": "disease,",
+    "s": 27.98,
+    "e": 28.4
+   }
+  ]
+ },
+ {
+  "start": 28.74,
+  "end": 30.32,
+  "words": [
+   {
+    "t": "and",
+    "s": 28.74,
+    "e": 28.8
+   },
+   {
+    "t": "it",
+    "s": 28.8,
+    "e": 28.92
+   },
+   {
+    "t": "was",
+    "s": 28.92,
+    "e": 29.06
+   },
+   {
+    "t": "really",
+    "s": 29.06,
+    "e": 29.46
+   },
+   {
+    "t": "getting",
+    "s": 29.46,
+    "e": 30.32
+   }
+  ]
+ },
+ {
+  "start": 30.32,
+  "end": 32.22,
+  "words": [
+   {
+    "t": "that",
+    "s": 30.32,
+    "e": 30.64
+   },
+   {
+    "t": "chronic",
+    "s": 30.64,
+    "e": 31.06
+   },
+   {
+    "t": "Lyme",
+    "s": 31.06,
+    "e": 31.4
+   },
+   {
+    "t": "disease",
+    "s": 31.4,
+    "e": 31.7
+   },
+   {
+    "t": "treated.",
+    "s": 31.7,
+    "e": 32.22
+   }
+  ]
+ },
+ {
+  "start": 32.22,
+  "end": 35.2,
+  "words": [
+   {
+    "t": "That",
+    "s": 32.22,
+    "e": 33.06
+   },
+   {
+    "t": "gave",
+    "s": 33.06,
+    "e": 33.32
+   },
+   {
+    "t": "me",
+    "s": 33.32,
+    "e": 33.6
+   },
+   {
+    "t": "my",
+    "s": 33.6,
+    "e": 34.04
+   },
+   {
+    "t": "life",
+    "s": 34.04,
+    "e": 34.78
+   },
+   {
+    "t": "back.",
+    "s": 34.78,
+    "e": 35.2
+   }
+  ]
+ }
 ];
