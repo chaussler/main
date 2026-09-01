@@ -1,10 +1,13 @@
 import type { DashboardSnapshot, Metric } from "./types";
+import { benchmarkFor, medianDownloads7d } from "./podcast/benchmarks";
 
 export interface HeadlineStat {
   key: string;
   label: string;
   value: number;
-  unit: "currency" | "count";
+  unit: "count" | "currency";
+  /** when set, shown instead of the formatted number (e.g. "Top 10%") */
+  displayValue?: string;
   deltaPct?: number;
   hint?: string;
 }
@@ -27,36 +30,80 @@ function sumMetrics(metrics: (Metric | undefined)[]): { value: number; deltaPct?
 
 /** The big tiles at the top of the dashboard. Robust to missing connectors. */
 export function computeHeadline(snap: DashboardSnapshot): HeadlineStat[] {
-  const revenue = sumMetrics([
-    findMetric(snap, "stripe", "gross_7d"),
-    findMetric(snap, "course-sales", "revenue_7d"),
-    findMetric(snap, "amazon-books", "royalties_7d"),
+  const totalReach = sumMetrics([
+    findMetric(snap, "host", "downloads_30d"),
+    findMetric(snap, "youtube", "views_30d"),
+    findMetric(snap, "social-clips", "clip_views_30d"),
   ]);
 
-  const audience = sumMetrics([
-    findMetric(snap, "instagram", "followers"),
-    findMetric(snap, "facebook", "fans"),
-    findMetric(snap, "linkedin", "followers"),
+  const confirmedPlays = sumMetrics([
+    findMetric(snap, "apple", "plays_30d"),
+    findMetric(snap, "spotify", "streams_30d"),
+    findMetric(snap, "youtube", "views_30d"),
+  ]);
+
+  const downloads = findMetric(snap, "host", "downloads_30d");
+
+  const followers = sumMetrics([
+    findMetric(snap, "apple", "followers"),
+    findMetric(snap, "spotify", "followers"),
+    findMetric(snap, "youtube", "subscribers"),
     findMetric(snap, "email-list", "subscribers"),
-    findMetric(snap, "linkedin-newsletter", "subscribers"),
   ]);
 
-  const newSubs = sumMetrics([
-    findMetric(snap, "email-list", "net_new_7d"),
-  ]);
+  const ctaClicks = findMetric(snap, "attribution", "clicks_30d");
 
-  const mrr = findMetric(snap, "stripe", "mrr");
-  const replies = findMetric(snap, "smartlead", "positive_7d");
-  const meetings = findMetric(snap, "smartlead", "meetings_7d");
-  const upcomingTalks = findMetric(snap, "speaking", "upcoming");
+  const typical = medianDownloads7d(snap.episodes.slice(0, 8).map((e) => e.downloads7d));
+  const tier = benchmarkFor(typical);
 
-  const stats: HeadlineStat[] = [
-    { key: "revenue_7d", label: "Revenue (7d)", value: revenue.value, unit: "currency", deltaPct: revenue.deltaPct, hint: "Stripe + course + book royalties" },
-    { key: "mrr", label: "MRR", value: mrr?.value ?? 0, unit: "currency", deltaPct: mrr?.deltaPct, hint: "Stripe subscriptions" },
-    { key: "audience", label: "Total audience", value: audience.value, unit: "count", deltaPct: audience.deltaPct, hint: "Followers + email + newsletter" },
-    { key: "new_subs_7d", label: "New email subs (7d)", value: newSubs.value, unit: "count", deltaPct: newSubs.deltaPct },
-    { key: "positive_replies_7d", label: "Positive replies (7d)", value: replies?.value ?? 0, unit: "count", deltaPct: replies?.deltaPct, hint: "Cold email" },
-    { key: "pipeline", label: "Meetings + talks ahead", value: (meetings?.value ?? 0) + (upcomingTalks?.value ?? 0), unit: "count", hint: "Booked meetings (7d) + upcoming speaking" },
+  return [
+    {
+      key: "total_reach",
+      label: "Total reach (30d)",
+      value: totalReach.value,
+      unit: "count",
+      deltaPct: totalReach.deltaPct,
+      hint: "Downloads + YouTube views + clip views. Different depths of attention — the honest upper bound of eyes & ears.",
+    },
+    {
+      key: "confirmed_plays",
+      label: "Confirmed plays (30d)",
+      value: confirmedPlays.value,
+      unit: "count",
+      deltaPct: confirmedPlays.deltaPct,
+      hint: "Apple plays + Spotify streams + YouTube views — someone actually pressed play, unlike a download.",
+    },
+    {
+      key: "downloads_30d",
+      label: "RSS downloads (30d)",
+      value: downloads?.value ?? 0,
+      unit: "count",
+      deltaPct: downloads?.deltaPct,
+      hint: "What the host reports. A delivery metric, not a listening metric.",
+    },
+    {
+      key: "followers",
+      label: "Total followers",
+      value: followers.value,
+      unit: "count",
+      deltaPct: followers.deltaPct,
+      hint: "Apple + Spotify followers + YouTube subs + email list — the audience you own vs. rent.",
+    },
+    {
+      key: "cta_clicks",
+      label: "CTA clicks (30d)",
+      value: ctaClicks?.value ?? 0,
+      unit: "count",
+      deltaPct: ctaClicks?.deltaPct,
+      hint: "Clicks on your /go/ attribution links — proof the show moves people toward your offers.",
+    },
+    {
+      key: "benchmark",
+      label: "Industry standing",
+      value: tier?.percentile ?? 100,
+      unit: "count",
+      displayValue: tier ? tier.label : "Bottom 50%",
+      hint: `Typical episode gets ~${typical.toLocaleString()} downloads in its first 7 days, ranked against all podcasts (Buzzsprout global stats).`,
+    },
   ];
-  return stats;
 }

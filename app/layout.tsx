@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Michael Sonick, DMD — Business Dashboard",
-  description: "One-glance view of every weekly touch point: social, email, newsletter, cold email, course & book sales, speaking, and Stripe.",
+  title: "Podcast Reach Dashboard",
+  description:
+    "One honest picture of a podcast's reach: RSS downloads, prefix-verified listens, Apple & Spotify behavior, YouTube, social clips, industry benchmarks, and CTA attribution — in one place.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

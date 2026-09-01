@@ -2,7 +2,7 @@ import type { MetricPoint } from "./types";
 
 // Tiny deterministic PRNG (mulberry32) so mock numbers are stable for a given
 // seed/day instead of jittering on every request.
-function mulberry32(seed: number) {
+export function mulberry32(seed: number) {
   return function () {
     seed |= 0;
     seed = (seed + 0x6d2b79f5) | 0;
@@ -12,7 +12,7 @@ function mulberry32(seed: number) {
   };
 }
 
-function hashString(s: string): number {
+export function hashString(s: string): number {
   let h = 2166136261;
   for (let i = 0; i < s.length; i++) {
     h ^= s.charCodeAt(i);

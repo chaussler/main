@@ -44,7 +44,24 @@ export interface Connector {
   fetch(): Promise<ConnectorResult>;
 }
 
+/**
+ * One row of the per-episode performance table. Merges what each platform
+ * knows about the same episode (RSS downloads, YouTube views, consumption).
+ */
+export interface EpisodeStats {
+  id: string;
+  title: string;
+  publishedAt: string; // ISO yyyy-mm-dd
+  /** downloads in the first 7 days after publish — the industry benchmark number */
+  downloads7d: number;
+  downloadsAllTime: number;
+  youtubeViews: number;
+  /** avg % of the episode actually listened to (Apple/Spotify), when known */
+  avgConsumptionPct?: number;
+}
+
 export interface DashboardSnapshot {
   generatedAt: string;
   connectors: ConnectorResult[];
+  episodes: EpisodeStats[];
 }
